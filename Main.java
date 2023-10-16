@@ -157,6 +157,12 @@ public class Main
 
         System.out.println(dob);
 
+        LocalDate date = LocalDate.now();
+
+
+
+ 
+
      scanner.close(); 
     }
 }
@@ -213,7 +219,16 @@ public class Main
 }*/
 
 
+public class Main
+{
 
+    public static void main(String[]args)
+    {
+
+        System.out.println("Hello World");
+
+    }
+}
 
 
 
