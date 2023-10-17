@@ -153,11 +153,16 @@ public class Main
 
         int day = scanner.nextInt(); 
 
-        String dob = day + "-" + month + "-" + year; 
+        LocalDate dob = LocalDate.of(year, month, day); 
 
         System.out.println(dob);
 
         LocalDate date = LocalDate.now();
+
+        long days = date.toEpochDay() - dob.toEpochDay(); 
+
+        System.out.println("You have been alive for " + days); 
+
 
 
 
@@ -219,16 +224,6 @@ public class Main
 }*/
 
 
-public class Main
-{
-
-    public static void main(String[]args)
-    {
-
-        System.out.println("Hello World");
-
-    }
-}
 
 
 
