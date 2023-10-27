@@ -168,4 +168,24 @@ System.out.println("goodbye/ fuck off");
 
 
 
+
+/*public class Week2
+
+{
+
+static void methodName()
+{
+System.out.println("This is a new method"); 
+
+}
+public static void main(String[]args)
+
+{
+
+    methodName(); 
+}
+}*/
+
+
+
  
