@@ -129,7 +129,7 @@ public class Week2
 }*/
 
 // Question 6 
-import java.util.Scanner; 
+/*import java.util.Scanner; 
 
 public class Week2
 {
@@ -155,36 +155,21 @@ System.out.println("Do you want to do another timestable? (yes/no)");
 
 String response = scanner.nextLine(); 
 
-restart = response.equals("yes");
+restart = response.equal("yes");
 
 }while( restart );
 
-System.out.println("goodbye/ fuck off");
+System.out.println("goodbye");
     scanner.close();
 
 }
 
-}
-
-
-
-
-/*public class Week2
-
-{
-
-static void methodName()
-{
-System.out.println("This is a new method"); 
-
-}
-public static void main(String[]args)
-
-{
-
-    methodName(); 
-}
 }*/
+
+
+
+
+
 
 
 
