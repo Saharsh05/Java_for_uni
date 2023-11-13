@@ -5,10 +5,11 @@ public class playSong {
         mp4 playMp4 = new mp4(); 
 
         Scanner scanner = new Scanner(System.in); 
-
+        String answer;  
+       do{
         System.out.println("Do you want to add a song: yes/no"); 
 
-        String answer = scanner.nextLine(); 
+        answer = scanner.nextLine(); 
 
         if(answer.equals("yes"))
         {
@@ -16,10 +17,14 @@ public class playSong {
 
             System.out.println("your song has been successfully added");
         }
-        
+        }while(answer.equals("yes"));  
+       
+        String answer2; 
+
+        do{
         System.out.println("Do you want to remove a song: yes/no"); 
 
-        String answer2 = scanner.nextLine(); 
+         answer2 = scanner.nextLine(); 
 
         if(answer2.equals("yes"))
         {
@@ -27,7 +32,9 @@ public class playSong {
 
             System.out.println("The song has been successfully removed"); 
         }
-
+        }while(answer2.equals("yes")); 
         playMp4.printSong(); 
+
+        scanner.close();
     }
 }
