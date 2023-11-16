@@ -14,7 +14,7 @@ public class mp4 {
         songs.add(new Song(" Baby Keem, ", " trademark usa, ", 165322978));
         songs.add(new Song(" The Weeknd, ", " Popular, ", 349939728));
         songs.add(new Song(" Burna Boy, ", " Last Last,", 342544284)); 
-        songs.add(new Song(" Giveon, ", " Heart BReak Anniversary, ", 1019011303)); 
+        songs.add(new Song(" Giveon, ", " Heart Break Anniversary, ", 1019011303)); 
         songs.add(new Song(" Juice WRLD, "," Let Me Know, ", 426607410)); 
     }
     
@@ -72,10 +72,31 @@ public class mp4 {
     public void printSong()
     {
          for(Song printSong : songs)
-        {
+        { 
             System.out.println(" artist: " + printSong.getartist() + " title: " + printSong.gettitle() + " streams: " + printSong.getplayCount()); 
         }
     }
+
+   public void givenPlays()
+   {
+    Scanner scanner = new Scanner(System.in); 
+
+    System.out.println("How many streams does the song have?");
+
+    int streams = scanner.nextInt(); 
+
+    System.out.println("These are all the songs that have a greater number of streams: "); 
+
+    for(Song givenPlays : songs)
+    {
+        if(givenPlays.getplayCount() > streams)
+        {
+            System.out.println("Artist " + givenPlays.getartist() +" Title " + givenPlays.gettitle() + " Streams " + givenPlays.getplayCount()); 
+        }
+    }
+
+    scanner.close();
+   }
 
 
         

@@ -33,6 +33,10 @@ public class playSong {
             System.out.println("The song has been successfully removed"); 
         }
         }while(answer2.equals("yes")); 
+
+        playMp4.givenPlays(); 
+        
+        System.out.println("Here is the list of your songs: ");
         playMp4.printSong(); 
 
         scanner.close();
