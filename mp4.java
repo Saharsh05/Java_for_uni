@@ -1,11 +1,13 @@
 
 import java.util.Scanner; 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 public class mp4 {
     private ArrayList<Song> songs = new ArrayList<Song>();
-
+      
     public mp4()
     {
+         
         songs.add(new Song(" Travis Scott, ", " MELTDOWN, ", 203003625));
         songs.add(new Song(" Metro Boomin, ", " Superhero, ", 503447652)); 
         songs.add(new Song(" 21 Savage, ", " Glock In My Lap, ", 441347306 )); 
@@ -38,6 +40,8 @@ public class mp4 {
         Song newSongs = new Song(artist, title, playCount); 
 
         songs.add(newSongs); 
+
+        
     }
 
     public void removeSong()
@@ -81,10 +85,11 @@ public class mp4 {
    public void givenPlays()
    {
     Scanner scanner = new Scanner(System.in); 
-
-    System.out.println("How many streams does the song have?");
-
+//try{
+    //System.out.println("How many streams does the song have?");
+    System.out.println("Enter in the minimum number of streams");
     int streams = scanner.nextInt(); 
+    //scanner.nextLine(); 
 
     System.out.println("These are all the songs that have a greater number of streams: "); 
 
@@ -95,8 +100,13 @@ public class mp4 {
             System.out.println("Artist " + givenPlays.getartist() +" Title " + givenPlays.gettitle() + " Streams " + givenPlays.getplayCount()); 
         }
     }
+//}
+/*catch(NoSuchElementException e)
+{
+    System.out.println("Error with input. Try again"); 
+}*/
 
-    scanner.close();
+    //scanner.close();
    }
 
 
