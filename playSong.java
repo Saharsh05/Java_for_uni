@@ -165,6 +165,7 @@ public class playSong
                 answer5 = "";
                 do
                 {
+                    scanner.nextLine();
                     System.out.println("Do you want to add another song"); 
                     if(scanner.hasNext())  
                     {
@@ -186,6 +187,7 @@ public class playSong
 
                     do
                     {
+                        scanner.nextLine();
                         System.out.println("Do you want to remove another song?"); 
                         answer6 = scanner.nextLine();
 
