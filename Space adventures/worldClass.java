@@ -26,7 +26,10 @@ public class MyWorld extends World
     int randomY = Greenfoot.getRandomNumber(getHeight());
     addObject(new Meteor(), randomX, randomY);
 }}
- 
+ public healthBar getheHealthBar()
+ {
+    return healthBar; 
+ }
 private void populate2(){
         for (int i = 0; i < 14; i++) {
     int randomX = Greenfoot.getRandomNumber(getWidth());

@@ -9,6 +9,10 @@ public class Astronaut {
 */
 public class Astronaut extends Actor
 {
+    
+    boolean touchingMeteor = false; 
+
+
      private int speed = 7;
     private int vSpeed = 0;
     private int gravity = 2;
@@ -56,7 +60,29 @@ public class Astronaut extends Actor
         }
     }
 }
-public void hitMeteor(){
+public void hitMeteor()
+{
+    Actor meteor = getOneIntersectingObject(meteors.class); 
+    if(meteor != null)
+    {
+        World Myworld = getWorld(); 
+        myWorld myWorld = (myWorld)myWorld; 
+        heatlhBar healthBar = space.gethealthBar(); 
+        if(touchingMeteor == false)
+        {
+            healthbar.loseHealth(); 
+            touchingMeteor = true; 
+
+            if(healthBar.health <= 0 )
+            {
+                System.out.println("Game Over!");
+                 Greenfoot.stop();
+            }
+        }
+    }else
+    {
+        touchingMeteor = false; 
+    }
 }
  
 public void fall(){
