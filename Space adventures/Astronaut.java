@@ -75,8 +75,9 @@ public void hitMeteor()
 
             if(healthBar.health <= 0 )
             {
-                System.out.println("Game Over!");
-                 Greenfoot.stop();
+                GameOver gameover = new GameOver(); 
+                myworld.addObject(gameover, myWorld.getWifth()/2, myWorld.getHeight()/2); 
+                myWorld.removeObject(this); 
             }
         }
     }else
