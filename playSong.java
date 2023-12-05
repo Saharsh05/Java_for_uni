@@ -130,8 +130,10 @@ public class playSong
         Scanner scanner = new Scanner(System.in);
         mp4 playMp4 = new mp4(); 
 
-       
-
+       System.out.println("Welcome to the Music Player"); 
+       System.out.println(""); 
+       System.out.println("Choose from the options below: ");  
+      
         int answer = 0;
 
         do{
@@ -140,7 +142,7 @@ public class playSong
         System.out.println("Press 2 if you want to remove a song");
         System.out.println("Press 3 if you want to enter in a minimum number off streams");
         System.out.println("Press 4 if you want to print all the songs");
-        
+        System.out.println("Press 6 to exit the system"); 
        
         if (scanner.hasNext())
         {
@@ -199,32 +201,26 @@ public class playSong
                         }
                     }while(answer6.equals("yes")); 
                     break; 
-            case 3: //playMp4.givenPlays();
-            //System.out.println("Enter in the minimum number of streams");
-
-            //do
-            //{
-              //  if(scanner.hasNextLong())
-                //{
-                    playMp4.givenPlays();
-                   break; 
-                //}
-                //else
-                //{
-                    //System.out.println("You did not enter a number"); 
-                   // scanner.next();
-                //}
-            //}while(true);
-            
+            case 3: 
+                    playMp4.givenPlays(scanner);
+                    String answer7; 
+                
+                    do {
+                        playMp4.givenPlays(scanner);
+                        System.out.println("Do you want to enter in a minimum number of streams again?");
+                        answer7 = scanner.nextLine();
+                    } while (answer7.equalsIgnoreCase("yes"));
 
             case 4: playMp4.printSong(); 
             break; 
 
             case 5: System.out.println("invalid response"); 
+            break; 
+            case 6: System.out.println("The application has been exited successfully!"); 
         } 
            
 
-    }while(answer != 5); 
+    }while(answer != 5 && answer != 6); 
 
     scanner.close();
 

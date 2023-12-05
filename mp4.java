@@ -8,7 +8,7 @@ public class mp4 {
     public mp4()
     {
          
-        songs.add(new Song(" Travis Scott, ", " MELTDOWN, ", 203003625));
+        songs.add(new Song(" Travis Scott ", " MELTDOWN ", 203003625));
         songs.add(new Song(" Metro Boomin, ", " Superhero, ", 503447652)); 
         songs.add(new Song(" 21 Savage, ", " Glock In My Lap, ", 441347306 )); 
         songs.add(new Song(" J. Cole, ", " Wet Dreamz, ", 1094891476)); 
@@ -82,32 +82,22 @@ public class mp4 {
         }
     }
 
-   public void givenPlays()
-   {
-    Scanner scanner = new Scanner(System.in); 
-//try{
-    //System.out.println("How many streams does the song have?");
+  
+  
+
+public void givenPlays(Scanner scanner) {
     System.out.println("Enter in the minimum number of streams");
-    int streams = scanner.nextInt(); 
-    //scanner.nextLine(); 
+    int streams = scanner.nextInt();
+    scanner.nextLine(); 
 
-    System.out.println("These are all the songs that have a greater number of streams: "); 
+    System.out.println("These are all the songs that have a greater number of streams than " + streams + ":");
 
-    for(Song givenPlays : songs)
-    {
-        if(givenPlays.getplayCount() > streams)
-        {
-            System.out.println("Artist " + givenPlays.getartist() +" Title " + givenPlays.gettitle() + " Streams " + givenPlays.getplayCount()); 
+    for (Song givenPlays : songs) {
+        if (givenPlays.getplayCount() > streams) {
+            System.out.println("Artist: " + givenPlays.getartist() + " Title: " + givenPlays.gettitle() + " Streams: " + givenPlays.getplayCount());
         }
     }
-//}
-/*catch(NoSuchElementException e)
-{
-    System.out.println("Error with input. Try again"); 
-}*/
-
-    //scanner.close();
-   }
+}
 
 
         
