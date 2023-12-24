@@ -1,5 +1,7 @@
+ import greenfoot;
+
 public class Astronaut {
-    import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+   ;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  
 /**
 * Write a description of class Astronaut here.
