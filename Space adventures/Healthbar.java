@@ -1,24 +1,24 @@
-public class Healthbar {
-    import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import greenfoot.Color;
 /**
-* Write a description of class healthBar here.
-* 
-* @author (your name) 
-* @version (a version number or a date) 
-*/
+ * Write a description of class healthBar here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date) 
+ */
 public class healthBar extends Actor 
 {
-    int health = 5;
+     private int health = 5;
     int healthBarWidth = 100;
     int healthBarHeight = 17;
-    int pixelsPerHealth = (int)healthBarWidth/health;
+   int pixelsPerHealth = (int)healthBarWidth/health;
     public healthBar(){
+    health = 5;
+     
     update();
 }
     public void act()
     {
-         update();
+        update();
     }
     public void update(){
         setImage(new GreenfootImage(healthBarWidth + 2, healthBarHeight + 2));
@@ -28,8 +28,14 @@ public class healthBar extends Actor
         myImage.setColor(Color.RED);
         myImage.fillRect(1,1, health*pixelsPerHealth,healthBarHeight);
     }
-    public void loseHealth(){
-        health--;
+    
+    
+
+    public void loseHealth() {
+        health -= 1; 
     }
-}
+
+    public int getHealth() {
+        return health;
+    }
 }

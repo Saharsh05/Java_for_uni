@@ -62,7 +62,7 @@ public class mp4 {
     
             if (currentSong.getartist().equals(removeArtist) || currentSong.gettitle().equals(removeTitle)) {
                 iterator.remove();
-               
+                System.out.println("Song was removed successfully"); 
             }
         }
 
