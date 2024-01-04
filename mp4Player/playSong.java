@@ -1,130 +1,8 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-/*public class playSong { 
-    public static void main(String[]args)
-    {
-        mp4 playMp4 = new mp4(); 
+//import java.util.InputMismatchException;
+//import java.util.Scanner;
 
-        Scanner scanner = new Scanner(System.in); 
-        String answer;  
-       do{
-        System.out.println("Do you want to add a song: yes/no"); 
-
-        answer = scanner.nextLine(); 
-
-        if(answer.equals("yes"))
-        {
-            playMp4.addSong(); 
-
-            System.out.println("your song has been successfully added");
-        }
-        }while(answer.equals("yes"));  
-       
-        String answer2; 
-
-        do{
-        System.out.println("Do you want to remove a song: yes/no"); 
-
-         answer2 = scanner.nextLine(); 
-
-        if(answer2.equals("yes"))
-        {
-            playMp4.removeSong(); 
-
-            System.out.println("The song has been successfully removed"); 
-        }
-        }while(answer2.equals("yes")); 
-        
-        playMp4.printSong();
-        playMp4.givenPlays(); 
-        
-        System.out.println("Here is the list of your songs: ");
-        playMp4.printSong(); 
-
-        scanner.close();
-    }
-}*/
 
 /*public class playSong
-{
-    public static void main(String[]args)
-    {
-        mp4 playMp4 = new mp4(); 
-
-        Scanner scanner = new Scanner(System.in); 
-        int answer; 
-        int answer2; 
-        int answer3; 
-        int answer4; 
-
-        do
-        {
-            System.out.println("Press 1 if you want to add a song"); 
-             answer = scanner.nextInt(); 
-            System.out.println("Press 2 if you want to remove a song");
-             answer2 = scanner.nextInt();  
-            System.out.println("Press 3 if you want to enter in a minimum number off streams");
-             answer3 = scanner.nextInt();  
-            System.out.println("Press 4 if you want to print all the songs");
-            answer4 = scanner.nextInt();  
-
-            if(answer == 1)
-            {
-                playMp4.addSong(); 
-                String answer5;
-
-                do
-                {
-                    System.out.println("Do you want to add another song"); 
-
-                    answer5 =  scanner.nextLine(); 
-
-                    if(answer5.equals("yes"))
-                    {
-                        playMp4.addSong(); 
-                        System.out.println("The song has been added successfully"); 
-                    }
-                }while(answer5.equals("yes")); 
-
-
-            }
-
-            if(answer2 == 2)
-                {
-                    playMp4.removeSong(); 
-                    String answer6; 
-
-                    do
-                    {
-                        System.out.println("Do you want to remove another song?"); 
-                        answer6 = scanner.nextLine();
-
-                        if(answer6.equals("yes"))
-                        {
-                            playMp4.removeSong();
-
-                            System.out.println("The song has been successfully removed"); 
-                        }
-                    }while(answer6.equals("yes")); 
-                }
-
-            if(answer3 == 3)
-            {
-                playMp4.givenPlays();
-            }
-
-            if(answer4 == 4)
-            {
-                playMp4.printSong();
-            }
-        }while(answer == 1 || answer2 == 2 || answer3 == 3 || answer4 == 4);
-
-        scanner.close();
-    }
-    
-}*/
-
-public class playSong
 {
     public static void main(String[]args)
     {
@@ -151,11 +29,10 @@ public class playSong
              
             
              
-            // scanner.nextLine();
+            
         }else
        {
-            //System.out.println("You have inputted in an invalid number");
-            //scanner.nextLine();
+            
             throw new InputMismatchException("Invalid input. Please enter a number.");
             
         } 
@@ -227,5 +104,133 @@ public class playSong
     scanner.close();
 
     }
-}
+}*/
 
+// trying to improve the code quality thus the change of code
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class playSong {
+    public static final int addSong = 1;
+    public static final int removeSong = 2;
+    public static final int enterStreams = 3;
+    public static final int printSongs = 4;
+    public static final int exit = 6;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        mp4 playMp4 = new mp4();
+
+        System.out.println("Welcome to the Music Player");
+        System.out.println("Choose from the options below:");
+
+        int answer = 0;
+
+        do {
+            displayMenuOptions();
+
+            try {
+                answer = getUserInput(scanner);
+
+                if (answer >= addSong && answer <= exit) {
+                    handleMenuOption(answer, playMp4, scanner);
+                } else {
+                    System.out.println("Invalid option. Please try again.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+            }
+
+        } while (answer != exit);
+
+        scanner.close();
+    }
+
+    private static void displayMenuOptions() {
+        System.out.println("Press 1 if you want to add a song");
+        System.out.println("Press 2 if you want to remove a song");
+        System.out.println("Press 3 if you want to enter in a minimum number of streams");
+        System.out.println("Press 4 to view playlist");
+        System.out.println("Press 6 to exit the system");
+    }
+
+    private static int getUserInput(Scanner scanner) {
+        int userInput = 0;
+
+        if (scanner.hasNextInt()) {
+            userInput = scanner.nextInt();
+        } else {
+            throw new InputMismatchException("Invalid input. Please enter a number.");
+        }
+
+        return userInput;
+    }
+
+    private static void handleMenuOption(int option, mp4 playMp4, Scanner scanner) {
+        switch (option) {
+            case addSong:
+                playMp4.addSong();
+                handleAddAnotherSong(playMp4, scanner);
+                break;
+
+            case removeSong:
+                playMp4.removeSong();
+                handleRemoveAnotherSong(playMp4, scanner);
+                break;
+
+            case enterStreams:
+                playMp4.givenPlays(scanner);
+                handleEnterStreamsAgain(playMp4, scanner);
+                break;
+
+            case printSongs:
+                playMp4.printSong();
+                break;
+
+            case exit:
+                System.out.println("The application has been exited successfully!");
+                break;
+
+            default:
+                System.out.println("Invalid option. Please try again.");
+        }
+    }
+
+    private static void handleAddAnotherSong(mp4 playMp4, Scanner scanner) {
+        String userResponse;
+        do {
+            scanner.nextLine();
+            System.out.println("Do you want to add another song");
+            userResponse = scanner.nextLine();
+
+            if (userResponse.equalsIgnoreCase("yes")) {
+                playMp4.addSong();
+                System.out.println("The song has been added successfully");
+            }
+        } while (userResponse.equalsIgnoreCase("yes"));
+    }
+
+    private static void handleRemoveAnotherSong(mp4 playMp4, Scanner scanner) {
+        String userResponse;
+        do {
+            scanner.nextLine();
+            System.out.println("Do you want to remove another song?");
+            userResponse = scanner.nextLine();
+
+            if (userResponse.equalsIgnoreCase("yes")) {
+                playMp4.removeSong();
+                System.out.println("This song was removed successfully");
+            }
+        } while (userResponse.equalsIgnoreCase("yes"));
+    }
+
+    private static void handleEnterStreamsAgain(mp4 playMp4, Scanner scanner) {
+        String userResponse;
+        do {
+            playMp4.givenPlays(scanner);
+            System.out.println("Do you want to enter in a minimum number of streams again?");
+            userResponse = scanner.nextLine();
+        } while (userResponse.equalsIgnoreCase("yes"));
+    }
+}
