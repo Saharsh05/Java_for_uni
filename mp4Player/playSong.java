@@ -1,110 +1,3 @@
-//import java.util.InputMismatchException;
-//import java.util.Scanner;
-
-
-/*public class playSong
-{
-    public static void main(String[]args)
-    {
-        Scanner scanner = new Scanner(System.in);
-        mp4 playMp4 = new mp4(); 
-
-       System.out.println("Welcome to the Music Player"); 
-       System.out.println(""); 
-       System.out.println("Choose from the options below: ");  
-      
-        int answer = 0;
-
-        do{
-
-        System.out.println("Press 1 if you want to add a song"); 
-        System.out.println("Press 2 if you want to remove a song");
-        System.out.println("Press 3 if you want to enter in a minimum number off streams");
-        System.out.println("Press 4 if you want to print all the songs");
-        System.out.println("Press 6 to exit the system"); 
-       
-        if (scanner.hasNext())
-        {
-             answer = scanner.nextInt(); 
-             
-            
-             
-            
-        }else
-       {
-            
-            throw new InputMismatchException("Invalid input. Please enter a number.");
-            
-        } 
-       
-
-        switch(answer)
-        {
-            case 1:  playMp4.addSong(); 
-                String answer5;
-                answer5 = "";
-                do
-                {
-                    scanner.nextLine();
-                    System.out.println("Do you want to add another song"); 
-                    if(scanner.hasNext())  
-                    {
-
-                    
-                        answer5 =  scanner.nextLine(); 
-                    
-                        if(answer5.equals("yes"))
-                        {
-                        playMp4.addSong(); 
-                        System.out.println("The song has been added successfully"); 
-                          }
-                    }
-                }while(answer5.equals("yes")); 
-                break; 
-
-            case 2: playMp4.removeSong(); 
-                    String answer6; 
-
-                    do
-                    {
-                        scanner.nextLine();
-                        System.out.println("Do you want to remove another song?"); 
-                        answer6 = scanner.nextLine();
-
-                        if(answer6.equals("yes"))
-                        {
-                            playMp4.removeSong();
-                            System.out.println("This song was removed successfully"); 
-
-                           
-                        }
-                    }while(answer6.equals("yes")); 
-                    break; 
-            case 3: 
-                    playMp4.givenPlays(scanner);
-                    String answer7; 
-                
-                    do {
-                        playMp4.givenPlays(scanner);
-                        System.out.println("Do you want to enter in a minimum number of streams again?");
-                        answer7 = scanner.nextLine();
-                    } while (answer7.equalsIgnoreCase("yes"));
-
-            case 4: playMp4.printSong(); 
-            break; 
-
-            case 5: System.out.println("invalid response"); 
-            break; 
-            case 6: System.out.println("The application has been exited successfully!"); 
-        } 
-           
-
-    }while(answer != 5 && answer != 6); 
-
-    scanner.close();
-
-    }
-}*/
 
 // trying to improve the code quality thus the change of code
 
@@ -112,29 +5,36 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class playSong {
+
+    // Constants for menu options
     public static final int addSong = 1;
     public static final int removeSong = 2;
     public static final int enterStreams = 3;
     public static final int printSongs = 4;
     public static final int exit = 6;
 
+    // Main method all code within this will show up on terminal
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         mp4 playMp4 = new mp4();
 
+        // Welcome messafe and menu options display
         System.out.println("Welcome to the Music Player");
         System.out.println("Choose from the options below:");
 
         int answer = 0;
 
+        // Loop handling user input. e.g if if statement is true then will be sent to
+        // the switch statement to complete user interaction
         do {
             displayMenuOptions();
 
             try {
                 answer = getUserInput(scanner);
 
+                // Handling user input based on the option the user selected
                 if (answer >= addSong && answer <= exit) {
-                    handleMenuOption(answer, playMp4, scanner);
+                    handleMenu(answer, playMp4, scanner);
                 } else {
                     System.out.println("Invalid option. Please try again.");
                 }
@@ -147,6 +47,7 @@ public class playSong {
         scanner.close();
     }
 
+    // Method to display menu options
     private static void displayMenuOptions() {
         System.out.println("Press 1 if you want to add a song");
         System.out.println("Press 2 if you want to remove a song");
@@ -155,6 +56,7 @@ public class playSong {
         System.out.println("Press 6 to exit the system");
     }
 
+    // Method to make sure that the user has inputed in a number
     private static int getUserInput(Scanner scanner) {
         int userInput = 0;
 
@@ -167,7 +69,8 @@ public class playSong {
         return userInput;
     }
 
-    private static void handleMenuOption(int answer, mp4 playMp4, Scanner scanner) {
+    // Method to handle chosen menu option
+    private static void handleMenu(int answer, mp4 playMp4, Scanner scanner) {
         switch (answer) {
             case addSong:
                 playMp4.addSong();
@@ -197,6 +100,8 @@ public class playSong {
         }
     }
 
+    // Method to handle adding another song if the user wants to. Added here rather
+    // then the switch statement to make code more readable
     private static void handleAddAnotherSong(mp4 playMp4, Scanner scanner) {
         String userResponse;
         do {
@@ -211,6 +116,7 @@ public class playSong {
         } while (userResponse.equalsIgnoreCase("yes"));
     }
 
+    // Method to handle the removal od a song upon the users request
     private static void handleRemoveAnotherSong(mp4 playMp4, Scanner scanner) {
         String userResponse;
         do {
@@ -225,6 +131,8 @@ public class playSong {
         } while (userResponse.equalsIgnoreCase("yes"));
     }
 
+    // Method to filter through the playlist based on a minimum number of strams
+    // again based on the user response
     private static void handleEnterStreamsAgain(mp4 playMp4, Scanner scanner) {
         String userResponse;
         do {
