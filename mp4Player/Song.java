@@ -1,42 +1,40 @@
 public class Song {
-    private String artist; 
-    private String title; 
-    private int playCount; 
+    // Private variables storing information off the song
+    private String artist;
+    private String title;
+    private int playCount;
 
-    public Song(String artist, String title, int playCount)
-    {
-        this.artist = artist; 
-        this.title = title; 
-        this.playCount = playCount; 
+    // constructor to initalize the song with the given variables
+    public Song(String artist, String title, int playCount) {
+        this.artist = artist;
+        this.title = title;
+        this.playCount = playCount;
     }
 
-    public String getartist()
-    {
-        return artist; 
-    }
-    
-    public String gettitle()
-    {
-        return title; 
+    // getter methods to retrieve information of the song as the variables are
+    // private
+    public String getartist() {
+        return artist;
     }
 
-    public int getplayCount()
-    {
-        return playCount; 
+    public String gettitle() {
+        return title;
     }
 
-    public void setartist(String artist)
-    {
-        this.artist = artist; 
+    public int getplayCount() {
+        return playCount;
     }
 
-    public void settitle(String title)
-    {
-        this.title = title; 
+    // setter metods to update and change the information of the song
+    public void setartist(String artist) {
+        this.artist = artist;
     }
 
-    public void setplayCOunt(int playCount)
-    {
-        this.playCount = playCount; 
+    public void settitle(String title) {
+        this.title = title;
+    }
+
+    public void setplayCOunt(int playCount) {
+        this.playCount = playCount;
     }
 }

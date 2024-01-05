@@ -167,8 +167,8 @@ public class playSong {
         return userInput;
     }
 
-    private static void handleMenuOption(int option, mp4 playMp4, Scanner scanner) {
-        switch (option) {
+    private static void handleMenuOption(int answer, mp4 playMp4, Scanner scanner) {
+        switch (answer) {
             case addSong:
                 playMp4.addSong();
                 handleAddAnotherSong(playMp4, scanner);
